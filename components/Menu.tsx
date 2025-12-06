@@ -33,7 +33,7 @@ const Menu: React.FC<MenuProps> = ({ resume, onClose, onRestart }) => {
     { label: 'SKILLS', action: () => setTab('skills') },
     { label: 'TRAINER CARD', action: () => setTab('contact') },
     { label: 'VISIT WEBSITE', action: () => window.location.href = '/cv.html' },
-    { label: 'RESUME', action: onClose },
+    { label: 'RESUME GAME', action: onClose },
     { label: 'RESTART', action: onRestart }
   ];
 
