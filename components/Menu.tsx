@@ -32,7 +32,7 @@ const Menu: React.FC<MenuProps> = ({ resume, onClose, onRestart }) => {
   const menuItems: { label: string; action: () => void; subtitle?: string }[] = [
     { label: 'SKILLS', action: () => setTab('skills') },
     { label: 'TRAINER CARD', action: () => setTab('contact') },
-    { label: 'VISIT WEBSITE', action: () => window.open('/cv.html', '_blank', 'noopener,noreferrer') },
+    { label: 'VISIT WEBSITE', action: () => window.location.href = '/cv.html' },
     { label: 'RESUME', action: onClose },
     { label: 'RESTART', action: onRestart }
   ];
