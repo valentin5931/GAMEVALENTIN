@@ -10,18 +10,16 @@ export const RESUME: ResumeData = {
     location: "Paris, France",
     linkedin: "@vwattelet"
   },
-  jobs: [
-    {
+ {
       id: "job1",
       title: "LINE PRODUCER",
       company: "KOH LANTA (SURVIVOR)",
       period: "Dec 2024 – Present",
       type: 'experience',
       details: [
-        "Lead line production for prime-time adventure format",
-        "100+ intl crew, 250+ local",
-        "Oversee budgets, logistics, legal & safety",
-        "Coordinate authorities & remote infrastructures"
+        "Commanding a 350+ crew fleet under high pressure.",
+        "Bridging creative vision with operational reality.",
+        "Ensuring prime-time quality & top-tier safety standards."
       ]
     },
     {
@@ -31,9 +29,9 @@ export const RESUME: ResumeData = {
       period: "Feb 2022 – Dec 2024",
       type: 'experience',
       details: [
-        "Managed full production pipeline in Philippines",
-        "Built remote basecamps & operational systems",
-        "Oversaw budgets, logistics & safety frameworks"
+        "Engineered complex remote production pipelines from scratch.",
+        "Transformed raw jungle into a high-tech broadcast hub.",
+        "Optimized massive budgets while boosting team morale."
       ]
     },
     {
@@ -43,9 +41,9 @@ export const RESUME: ResumeData = {
       period: "Sep 2023 – Sep 2024",
       type: 'experience',
       details: [
-        "Led artistic direction: visual identity, pacing",
-        "Supervised budget, legal and production flow",
-        "Currently developing Season 2"
+        "Unlocked creative skills: visual identity, pacing & direction.",
+        "Harmonized artistic ambition with strict budget logic.",
+        "Designed the narrative arc for the show's identity."
       ]
     },
     {
@@ -55,9 +53,9 @@ export const RESUME: ResumeData = {
       period: "2016 – 2021",
       type: 'experience',
       details: [
-        "Senior manager across Cambodia, Fiji, Polynesia",
-        "Ensured field safety in tropical environments",
-        "Managed permits, camps & challenge builds"
+        "Mastered field operations in hostile tropical biomes.",
+        "Shielded the crew with advanced safety protocols.",
+        "Constructed massive challenge arenas from ground zero."
       ]
     },
     {
@@ -67,9 +65,9 @@ export const RESUME: ResumeData = {
       period: "2013 – 2015",
       type: 'experience',
       details: [
-        "Worked on Human (60+ countries)",
-        "Terra and Algeria From Above",
-        "Supported international logistics"
+        "Forged first weapons on global documentary sets (Human).",
+        "Absorbed the discipline of high-stakes storytelling.",
+        "Grinded logistics XP across 60+ countries."
       ]
     }
   ],
