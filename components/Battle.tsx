@@ -77,11 +77,26 @@ const ClapperboardSprite = () => (
 
 const Battle: React.FC<BattleProps> = ({ job, onClose }) => {
   const [phase, setPhase] = useState<'encounter' | 'details' | 'caught'>('encounter');
+  // Ajout du compteur de page pour le texte
+  const [textPage, setTextPage] = useState(0);
 
   const handleNext = () => {
-    if (phase === 'encounter') setPhase('details');
-    else if (phase === 'details') setPhase('caught');
-    else onClose();
+    if (phase === 'encounter') {
+      setPhase('details');
+      setTextPage(0); // On commence à la première phrase
+    } 
+    else if (phase === 'details') {
+      // Si on n'est pas à la dernière phrase, on avance
+      if (textPage < job.details.length - 1) {
+        setTextPage(textPage + 1);
+      } else {
+        // Sinon, on a tout lu, on passe à la phase suivante
+        setPhase('caught');
+      }
+    } 
+    else {
+      onClose();
+    }
   };
 
   useEffect(() => {
@@ -93,7 +108,7 @@ const Battle: React.FC<BattleProps> = ({ job, onClose }) => {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [phase, onClose]);
+  }, [phase, textPage, onClose]); // Ajout de textPage aux dépendances
 
   const renderJobSprite = () => {
     switch (job.id) {
@@ -171,16 +186,19 @@ const Battle: React.FC<BattleProps> = ({ job, onClose }) => {
                     Role: {job.title}
                   </p>
                 )}
+                
                 {phase === 'details' && (
-                  <div className="text-[#202020] text-[8px] sm:text-[10px] leading-4 sm:leading-5">
-                    <p className="font-bold mb-1 uppercase text-xs">{job.period}</p>
-                    <ul className="list-none">
-                      {job.details.slice(0, 3).map((d, i) => (
-                        <li key={i} className="mb-1">- {d}</li>
-                      ))}
-                    </ul>
+                  <div className="text-[#202020] text-[10px] sm:text-xs leading-5 sm:leading-6 uppercase">
+                    <p className="font-bold mb-2 border-b border-[#202020] pb-1 flex justify-between">
+                      <span>MISSION LOG</span>
+                      <span>{textPage + 1}/{job.details.length}</span>
+                    </p>
+                    <p>
+                      {job.details[textPage]}
+                    </p>
                   </div>
                 )}
+
                  {phase === 'caught' && (
                   <p className="text-[#202020] text-[10px] sm:text-xs leading-5 sm:leading-6 uppercase">
                     Valentin is learning <span className="font-bold">A NEW SKILL</span>!
