@@ -92,7 +92,7 @@ const App: React.FC = () => {
                         <span>▶</span> PLAY GAME
                       </button>
                       <button 
-                        onClick={() => window.open('https://valentinwattelet.com', '_blank', 'noopener,noreferrer')}
+                        onClick={() => window.open('/cv.html', '_blank', 'noopener,noreferrer')}
                         className="text-[#0f380f] text-xs font-bold border-2 border-[#0f380f] py-3 px-2 hover:bg-[#0f380f] hover:text-[#f0f8f0] transition-colors flex items-center justify-center gap-2"
                       >
                         <span>▶</span> VISIT WEBSITE
