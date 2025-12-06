@@ -92,7 +92,7 @@ const App: React.FC = () => {
                         <span>▶</span> PLAY GAME
                       </button>
                       <button 
-                        onClick={() => { window.location.href = '/cv.html' },
+                        onClick={() => { window.open = '/cv.html' },
                         className="text-[#0f380f] text-xs font-bold border-2 border-[#0f380f] py-3 px-2 hover:bg-[#0f380f] hover:text-[#f0f8f0] transition-colors flex items-center justify-center gap-2"
                       >
                         <span>▶</span> VISIT WEBSITE
@@ -142,7 +142,7 @@ const App: React.FC = () => {
                   
                   <div className="flex flex-col gap-2 w-full px-4 mt-4">
                      <a href={`mailto:${RESUME.contact.email}`} className="bg-[#0f380f] text-[#f0f8f0] p-3 text-[10px] block hover:bg-[#306230]">CONTACT ME</a>
-                     <button onClick={() => window.location.href = '/cv.html' }, className="bg-[#0f380f] text-[#f0f8f0] p-3 text-[10px] block hover:bg-[#306230]">WEBSITE</button>
+                     <button onClick={() => window.open = '/cv.html' }, className="bg-[#0f380f] text-[#f0f8f0] p-3 text-[10px] block hover:bg-[#306230]">WEBSITE</button>
                      <button onClick={startOver} className="text-[#0f380f] text-[10px] mt-4 hover:underline">RESTART GAME</button>
                   </div>
                 </div>
