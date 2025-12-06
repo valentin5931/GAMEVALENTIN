@@ -1,0 +1,8 @@
+{
+  "name": "Valentin's Adventure Resume",
+  "description": "A Pokémon-style RPG resume for Valentin Wattelet featuring an AI-powered image editor.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
