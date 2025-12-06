@@ -31,57 +31,48 @@ const App: React.FC = () => {
       window.dispatchEvent(new KeyboardEvent(type, { key }));
   };
 
-  // --- LOGIQUE TURBO POUR LA CROIX DIRECTIONNELLE ---
+  // --- LOGIQUE TURBO ---
   const intervalRef = useRef<number | null>(null);
 
   const startMoving = (key: string) => {
-    // 1. On appuie une première fois tout de suite
     simKey(key, 'keydown');
-
-    // 2. Si on est déjà en train de bouger, on arrête l'ancien mouvement
     if (intervalRef.current) clearInterval(intervalRef.current);
-
-    // 3. On lance la répétition (toutes les 100ms)
     intervalRef.current = window.setInterval(() => {
       simKey(key, 'keydown');
     }, 100);
   };
 
   const stopMoving = (key: string) => {
-    // On arrête la répétition
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
-    // On relâche la touche
     simKey(key, 'keyup');
   };
-  // ---------------------------------------------------
+  // ---------------------
+
+  // Styles pour désactiver les effets natifs du mobile (sélection, loupe, flash bleu)
+  const noSelectStyle: React.CSSProperties = {
+    WebkitTapHighlightColor: 'transparent',
+    WebkitTouchCallout: 'none',
+    userSelect: 'none',
+    WebkitUserSelect: 'none',
+    touchAction: 'none',
+    outline: 'none'
+  };
 
   const DPadBtn = ({ direction, k, style }: { direction: string, k: string, style: string }) => (
       <button
-          className={`absolute ${style} hover:bg-[#252525] active:bg-[#1a1a1a] touch-none select-none`}
-          // Pour souris et tactile : on commence à bouger quand on appuie
+          className={`absolute ${style} hover:bg-[#252525] active:bg-[#1a1a1a]`}
+          style={noSelectStyle} // Application du style anti-sélection
           onPointerDown={(e) => { 
             e.preventDefault(); 
-            // Capture du pointeur pour ne pas perdre le focus si le doigt glisse un peu
             (e.target as HTMLElement).setPointerCapture(e.pointerId);
             startMoving(k); 
           }}
-          // On arrête quand on relâche
-          onPointerUp={(e) => { 
-            e.preventDefault(); 
-            stopMoving(k); 
-          }}
-          // On arrête aussi si le doigt sort du bouton ou si on annule
-          onPointerLeave={(e) => { 
-            e.preventDefault(); 
-            stopMoving(k); 
-          }}
-          onPointerCancel={(e) => {
-            e.preventDefault();
-            stopMoving(k);
-          }}
+          onPointerUp={(e) => { e.preventDefault(); stopMoving(k); }}
+          onPointerLeave={(e) => { e.preventDefault(); stopMoving(k); }}
+          onPointerCancel={(e) => { e.preventDefault(); stopMoving(k); }}
           onContextMenu={(e) => e.preventDefault()}
           aria-label={direction}
       />
@@ -90,8 +81,8 @@ const App: React.FC = () => {
   const ActionBtn = ({ label, k, color }: { label: string, k: string, color: string }) => (
       <div className="flex flex-col items-center gap-1 transform active:translate-y-[2px]">
           <button
-              className={`w-10 h-10 rounded-full shadow-lg border-b-4 touch-none ${color} border-opacity-40 active:border-b-0`}
-              style={{ borderColor: 'rgba(0,0,0,0.3)' }}
+              className={`w-10 h-10 rounded-full shadow-lg border-b-4 ${color} border-opacity-40 active:border-b-0`}
+              style={{ ...noSelectStyle, borderColor: 'rgba(0,0,0,0.3)' }} // Ajout du style anti-sélection ici aussi
               onPointerDown={(e) => { e.preventDefault(); simKey(k, 'keydown'); }}
               onPointerUp={(e) => { e.preventDefault(); simKey(k, 'keyup'); }}
               onPointerLeave={(e) => { e.preventDefault(); simKey(k, 'keyup'); }}
@@ -226,6 +217,7 @@ const App: React.FC = () => {
                 <div className="flex flex-col items-center">
                    <button 
                       className="w-8 h-2 bg-[#303030] rounded-full border border-[#505050] active:translate-y-[1px] shadow-sm touch-none"
+                      style={noSelectStyle} // Et aussi sur Select/Start
                       onPointerDown={(e) => { e.preventDefault(); simKey('Shift', 'keydown'); }} 
                       onPointerUp={(e) => { e.preventDefault(); simKey('Shift', 'keyup'); }}
                    />
@@ -234,6 +226,7 @@ const App: React.FC = () => {
                 <div className="flex flex-col items-center">
                    <button 
                       className="w-8 h-2 bg-[#303030] rounded-full border border-[#505050] active:translate-y-[1px] shadow-sm touch-none"
+                      style={noSelectStyle} // Et aussi sur Select/Start
                       onClick={() => {
                          if (gameState === GameState.OVERWORLD) setGameState(GameState.MENU);
                          else if (gameState === GameState.MENU) setGameState(GameState.OVERWORLD);
