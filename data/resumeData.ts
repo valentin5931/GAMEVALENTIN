@@ -10,7 +10,8 @@ export const RESUME: ResumeData = {
     location: "Paris, France",
     linkedin: "@vwattelet"
   },
- {
+  jobs: [
+    {
       id: "job1",
       title: "LINE PRODUCER",
       company: "KOH LANTA (SURVIVOR)",
