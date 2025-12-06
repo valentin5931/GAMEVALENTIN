@@ -142,7 +142,7 @@ const App: React.FC = () => {
                   
                   <div className="flex flex-col gap-2 w-full px-4 mt-4">
                      <a href={`mailto:${RESUME.contact.email}`} className="bg-[#0f380f] text-[#f0f8f0] p-3 text-[10px] block hover:bg-[#306230]">CONTACT ME</a>
-                     <button onClick={() => window.open('https://valentinwattelet.com', '_blank', 'noopener,noreferrer')} className="bg-[#0f380f] text-[#f0f8f0] p-3 text-[10px] block hover:bg-[#306230]">WEBSITE</button>
+                     <button onClick={() => window.open('/cv.html', '_blank', 'noopener,noreferrer')} className="bg-[#0f380f] text-[#f0f8f0] p-3 text-[10px] block hover:bg-[#306230]">WEBSITE</button>
                      <button onClick={startOver} className="text-[#0f380f] text-[10px] mt-4 hover:underline">RESTART GAME</button>
                   </div>
                 </div>
